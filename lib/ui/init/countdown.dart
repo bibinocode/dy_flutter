@@ -2,8 +2,10 @@
 import 'dart:math' as Math;
 
 import 'package:bbook/base.dart';
+import 'package:bbook/routes/route_paths.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class Countdown extends StatefulWidget {
   const Countdown({super.key});
@@ -52,7 +54,7 @@ class CountdownState extends State<Countdown> with DyBase, SingleTickerProviderS
   void _jumpIndex() {
     // 倒计时结束跳转到首页 mounted 确保 widget 还在树中
     if (mounted) {
-      // context.go(RouterPaths.home); // go替换路由
+      context.go(RouterPaths.home); // go替换路由
     }
   }
 

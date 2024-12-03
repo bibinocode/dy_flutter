@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 mixin DyBase {
+  // 默认主题色
+  static const defaultColor = Color(0xffff5d23);
+
   // 设计稿尺寸
   static const double dessignWidth = 375.0;
   static const double dessignHeight = 1335.0;
