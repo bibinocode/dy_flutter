@@ -10,37 +10,46 @@ class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
   @override
-  _SplashPageState createState() => _SplashPageState();
+  SplashPageState createState() => SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with DyBase {
+class SplashPageState extends State<SplashPage> with DyBase {
+  // TODO  initState 的时候需要做数据请求
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SizedBox(
-      width: 1.w, // 屏幕宽度
+      width: 1.sw, // 使用屏幕宽度
+      height: 1.sh, // 使用屏幕高度
       child: Stack(
-        // 使用Stack布局，方便后续添加其他组件
         children: <Widget>[
           Positioned(
-            // 倒计时组件
-            top: dp(25),
-            right: dp(25),
+            top: 25.w,
+            right: 25.w,
             child: const Countdown(),
           ),
           SizedBox(
-            width: 1.w,
+            width: 1.sw,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center, // 垂直居中
               children: <Widget>[
                 Image.asset(
                   'images/init_logo.webp',
-                  width: dp(330),
+                  width: 330.w,
+                  // 添加错误处理
+                  errorBuilder: (context, error, stackTrace) {
+                    return const SizedBox();
+                  },
                 ),
-                const Text('hello'),
+                Padding(padding: EdgeInsets.only(top: dp(70))),
+                Image.asset(
+                  'images/init_icon.png',
+                  width: dp(90),
+                )
               ],
             ),
-          )
+          ),
         ],
       ),
     ));

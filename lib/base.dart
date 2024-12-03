@@ -16,4 +16,7 @@ mixin DyBase {
 
   // 适配转dp
   double dp(double dessignValue) => ScreenUtil().setWidth(dessignValue).toDouble();
+
+  // 适配字体sp
+  double sp(double dessignValue) => ScreenUtil().setSp(dessignValue).toDouble();
 }
