@@ -1,0 +1,161 @@
+name: bbook
+description: '读书bloock'
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  flutter_bloc: ^8.1.6
+  go_router: ^14.6.1
+  flutter_screenutil: ^5.9.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^4.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+  assets:
+    - images/pic-default.jpg
+    - images/back.webp
+    - images/default-avatar.webp
+    - images/shayuniang.png
+    - images/head/search.webp
+    - images/cfk.webp
+    - images/hot.png
+    - images/member.png
+    - images/play.png
+    - images/gift.png
+    - images/gift-banner.png
+    - images/gift-x.png
+    - images/gift-1.png
+    - images/float-icon.webp
+    - images/init_logo.webp
+    - images/init_icon.png
+    - images/show-area.webp
+    - images/broadcast.webp
+    - images/fun_home_pull_down.png
+    - images/cjf.webp
+    - images/dg.webp
+    - images/dg0.webp
+    - images/cqe.webp
+    - images/num/0.webp
+    - images/num/1.webp
+    - images/num/2.webp
+    - images/num/3.webp
+    - images/num/4.webp
+    - images/num/5.webp
+    - images/num/6.webp
+    - images/num/7.webp
+    - images/num/8.webp
+    - images/num/9.webp
+    - images/cate/tab-0.webp
+    - images/cate/tab-1.webp
+    - images/cate/tab-2.webp
+    - images/cate/tab-3.webp
+    - images/cate/tab-4.webp
+    - images/cate/tab-5.webp
+    - images/cate/tab-6.webp
+    - images/cate/tab-7.webp
+    - images/cate/tab-8.webp
+    - images/cate/tab-9.webp
+    - images/cate/tab-10.webp
+
+    - images/login/syn.webp
+    - images/login/qq.webp
+    - images/login/wx.webp
+    - images/login/weibo.webp
+    - images/login/close.webp
+    - images/login/safe.webp
+    - images/login/member.webp
+    - images/login/lock.webp
+
+    - images/head/dylogo.png
+    - images/head/camera.webp
+    - images/head/chat.webp
+    - images/head/game.webp
+    - images/head/history.webp
+
+    - images/lv/3.png
+    - images/lv/30.png
+    - images/lv/50.png
+    - images/lv/80.png
+
+    - images/nav/nav-11.jpg
+    - images/nav/nav-21.jpg
+    - images/nav/nav-31.jpg
+    - images/nav/nav-41.jpg
+    - images/nav/nav-51.jpg
+    - images/nav/nav-12.jpg
+    - images/nav/nav-22.jpg
+    - images/nav/nav-32.jpg
+    - images/nav/nav-42.jpg
+    - images/nav/nav-52.jpg
+
+    - images/bar/hot-chat.jpg
+    - images/bar/day-title.png
+    - images/bar/hot-title.png
+    - images/bar/pull-icon.webp
+    - images/bar/usefulSelect.webp
+    - images/bar/girl.webp
+    - images/bar/boy.webp
+    - images/bar/tab-0.png
+    - images/bar/tab-1.png
+    - images/bar/tab-2.png
+    - images/bar/chat-add.jpg
+    - images/bar/chat-share.jpg
+    - images/bar/chat-star.jpg
+    - images/bar/chat-star-act.webp
+
+analyzer:
+  strong-mode: true
+  language:
+    strict-raw-types: true
+  errors:
+    missing_return: error
+    missing_required_param: error
+    invalid_assignment: error
+    invalid_annotation_target: ignore
+
+dart_style:
+  line_length: 120
