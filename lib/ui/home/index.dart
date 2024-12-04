@@ -23,6 +23,17 @@ class HomePageState extends State<HomePage> with DyBase {
     super.dispose();
   }
 
+  // 回到顶部
+  void _indexPageScrollTop() {
+    _scrollController.animateTo(
+      .0,
+      duration: const Duration(
+        milliseconds: 300,
+      ),
+      curve: Curves.ease,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -70,6 +81,19 @@ class HomePageState extends State<HomePage> with DyBase {
                   : _bottomIcon('images/nav/nav-51.jpg')),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent, // 悬浮按钮背景颜色
+        foregroundColor: DyBase.defaultColor, // 悬浮按钮文字颜色
+        tooltip: 'Increment', // 悬浮按钮提示文字
+        onPressed: () {},
+        child: Image.asset(
+          'images/float-icon.webp',
+          width: dp(100),
+          height: dp(100),
+          fit: BoxFit.contain,
+        ),
+      ),
+      resizeToAvoidBottomInset: false, // 如果为ture，当键盘弹出时，页面会自动调整，避免被键盘遮挡
     ));
   }
 
