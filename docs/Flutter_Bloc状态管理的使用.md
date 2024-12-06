@@ -202,6 +202,18 @@ class CounterBloc extends Bloc<CounterEvent,int> {
           emit(state+1);
       })
   }
+
+
+
+  // 观察
+
+  @override
+  void onChange(Change<int> change){
+    super.onChange(change);
+    print(change);
+  }
+
+
 }
 
 
@@ -226,3 +238,75 @@ Future<void> main() async {
   await bloc.close();
 }
 ```
+
+3、 `onTransition` 可以捕获有关触发状态变化的信息
+
+因为 bloc 是通过事件驱动，因此可以捕获有关触发状态变化的信息,从一个状态变成另一个状态称为 过渡。一个
+过渡 包含了当前状态，触发事件以及下一个状态。
+
+```dart
+
+sealed class CounterEvent {}
+
+final class CounterIncrementPressed extends CounterEvent {}
+
+class CounterBloc extends Bloc<CounterEvent, int> {
+  CounterBloc() : super(0) {
+    on<CounterIncrementPressed>((event, emit) => emit(state + 1));
+  }
+
+  @override
+  void onChange(Change<int> change) {
+    super.onChange(change);
+    print(change);
+  }
+
+  @override
+  void onTransition(Transition<CounterEvent, int> transition) {
+    super.onTransition(transition);
+    print(transition);
+  }
+}
+
+```
+
+输出:
+
+```bash
+Transition { currentState: 0, event: Instance of 'CounterIncrementPressed', nextState: 1 }
+Change { currentState: 0, nextState: 1 }
+```
+
+onTransition 在 onChange 之前被调用并且包含了触发 currentState 到 nextState 的事件。
+
+同理可以在 `BlocObserver` 中重写 `onTransition` 来实现全局监听(优先级：先本地再全局)
+
+4、 重写 `onEvent` 来监听事件添加
+
+如果重写 onEvent 方法，无论什么时候有新的事件被添加到 Bloc，这个方法都会被调用。和 onChange 和
+onTransition 方法一样，onEvent 也可以在本地或者全局被重写。
+
+当事件被添加时，onEvent 会被立即调用。本地的 onEvent 会在 BlocObserver 的全局 onEvent 之前被调用。
+
+```dart
+class SimpleBlocObserver extends BlocObserver {
+  @override
+  void onEvent(Bloc bloc,Object? event){
+    super.onEvent(bloc, event);
+    print('${bloc.runtimeType} $event');
+  }
+}
+
+```
+
+5、错误处理同 Cubit 一样 拥有 `addError` 和 `onError` 方法
+
+## 什么时候使用 Cubit 和 Bloc
+
+- Cubit 用于管理简单的状态，通常是值类型，如 int、String 或 bool。
+- Bloc 用于管理更复杂的状态，通常是对象或数据结构。
+- 如果需要处理错误或监听事件，使用 Bloc。
+- 如果只需要管理简单的状态，使用 Cubit。
+- Bloc 可以溯源，捕获相关触发时机
+- Bloc 还有一些操作符，例如 `buffer` 、`debounceTime` 、`throttle` 等
+- 如果你不确定应该用哪一种，先用 Cubit，后面根据需要你可以再重构或者升级为 Bloc。
