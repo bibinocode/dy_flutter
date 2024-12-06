@@ -310,3 +310,46 @@ class SimpleBlocObserver extends BlocObserver {
 - Bloc 可以溯源，捕获相关触发时机
 - Bloc 还有一些操作符，例如 `buffer` 、`debounceTime` 、`throttle` 等
 - 如果你不确定应该用哪一种，先用 Cubit，后面根据需要你可以再重构或者升级为 Bloc。
+
+## 提供的组件
+
+- `BlocBuilder` ：用于构建 UI 组件，当状态变化时会自动重绘
+
+- `BlocProvider`：透过 BlocProvider.of<T>(context) 将一个 bloc 提供给它的 children。BlocProvider 用
+  作于依赖注入（DI）widget ，以便在子树 (subtree) 中可以提供单个 bloc 实例给多个 widget 使用
+
+- `MultiBlocProvider`: 用来将多个 BlocProvider Widgets 合并为一个
+
+例如不用 `MultiBlocProvider` 时，需要这么写:
+
+```dart
+BlocProvider<BlocA>(
+  create: (BuildContext context) => BlocA(),
+  child: BlocProvider<BlocB>(
+    create: (BuildContext context) => BlocB(),
+    child: BlocProvider<BlocC>(
+      create: (BuildContext context) => BlocC(),
+      child: ChildA(),
+    ),
+  ),
+);
+```
+
+使用了之后：
+
+```dart
+MultiBlocProvider(
+  providers: [
+    BlocProvider<BlocA>(
+      create: (BuildContext context) => BlocA(),
+    ),
+    BlocProvider<BlocB>(
+      create: (BuildContext context) => BlocB(),
+    ),
+    BlocProvider<BlocC>(
+      create: (BuildContext context) => BlocC(),
+    ),
+  ],
+  child: ChildA(),
+);
+```
