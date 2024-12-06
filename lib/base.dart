@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 mixin DyBase {
+  static const baseSchema = 'http';
+  static const baseHost = '192.168.10.15';
+  static const basePort = '1236';
+  static const baseUrl = '${DyBase.baseSchema}://${DyBase.baseHost}:${DyBase.basePort}';
+
   // 默认主题色
   static const defaultColor = Color(0xffff5d23);
 
@@ -14,8 +19,6 @@ mixin DyBase {
   static double statusBarHeight(BuildContext context) {
     return ScreenUtil().statusBarHeight;
   }
-
-  static const baseSchema = 'http';
 
   // 适配转dp
   double dp(double dessignValue) => ScreenUtil().setWidth(dessignValue).toDouble();

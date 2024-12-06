@@ -167,7 +167,7 @@ class HomePageState extends State<HomePage> with DyBase {
     );
 
     var pages = [
-      const CommendPage(),
+      CommendPage(_scrollController),
       const FunnyPage(),
       const FishBarPage(),
       const FocusPage(),
